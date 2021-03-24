@@ -14,6 +14,8 @@ class SearchVC: UIViewController {
     let userNameTextfield = GFTextfield()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
+    var isUserNameEntered: Bool { return !userNameTextfield.text!.isEmpty }
+    
     // MARK: - IBOutlets
 
  
@@ -85,6 +87,8 @@ class SearchVC: UIViewController {
     func configureCallToActionButton(){
         
         view.addSubview(callToActionButton)
+        callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             callToActionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -96,9 +100,25 @@ class SearchVC: UIViewController {
     
     // MARK: - IBActions
     
+    
     // MARK: - Actions
     
     // MARK: - Navigation
+    
+    @objc func pushFollowerListVC(){
+       
+        guard isUserNameEntered else {
+            print("No username")
+            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
+            return
+        }
+        
+        let followerListVC = FollowerListVC()
+        followerListVC.username = userNameTextfield.text
+        followerListVC.title = userNameTextfield.text
+        navigationController?.pushViewController(followerListVC, animated: true)
+        
+    }
     
     // MARK: - Network Manager calls
     
@@ -111,7 +131,7 @@ class SearchVC: UIViewController {
 extension SearchVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("Did tap return")
+        pushFollowerListVC()
         return true
     }
 }
