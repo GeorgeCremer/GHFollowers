@@ -37,11 +37,7 @@ class SearchVC: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
-    
-    
-    
 
-    
     
     // MARK: - Life cycle
     
@@ -99,7 +95,6 @@ class SearchVC: UIViewController {
     
     
     // MARK: - IBActions
-    
     
     // MARK: - Actions
     
