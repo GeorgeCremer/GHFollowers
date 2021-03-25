@@ -28,6 +28,7 @@
 		5E733B37260CB2930022059C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733B36260CB2930022059C /* ErrorMessage.swift */; };
 		5E733B3B260CD1F10022059C /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733B3A260CD1F10022059C /* FollowerCell.swift */; };
 		5E733B3E260CD2630022059C /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733B3D260CD2630022059C /* GFAvatarImageView.swift */; };
+		5E733B94260CF8B60022059C /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733B93260CF8B60022059C /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5E733B36260CB2930022059C /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		5E733B3A260CD1F10022059C /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		5E733B3D260CD2630022059C /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		5E733B93260CF8B60022059C /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				5E733B36260CB2930022059C /* ErrorMessage.swift */,
+				5E733B93260CF8B60022059C /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				5E733AE1260B9DF10022059C /* GFTextfield.swift in Sources */,
 				5E733B37260CB2930022059C /* ErrorMessage.swift in Sources */,
 				5E733B3E260CD2630022059C /* GFAvatarImageView.swift in Sources */,
+				5E733B94260CF8B60022059C /* UIHelper.swift in Sources */,
 				5E733B26260C8A3B0022059C /* Follower.swift in Sources */,
 				5E733AFF260BC3DF0022059C /* UIViewController+Ext.swift in Sources */,
 				5E733AD5260B88900022059C /* SearchVC.swift in Sources */,
