@@ -34,6 +34,7 @@
 		5E733CA3260E2C910022059C /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733CA2260E2C910022059C /* GFUserInfoHeaderVC.swift */; };
 		5E733CA9260E2D080022059C /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733CA8260E2D080022059C /* GFSecondaryTitleLabel.swift */; };
 		5E733CAC260E37490022059C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733CAB260E37490022059C /* Constants.swift */; };
+		5E733CAF260E48E30022059C /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733CAE260E48E30022059C /* GFItemInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		5E733CA2260E2C910022059C /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
 		5E733CA8260E2D080022059C /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		5E733CAB260E37490022059C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5E733CAE260E48E30022059C /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 			children = (
 				5E733AFA260BBF790022059C /* GFContainerView.swift */,
 				5E733C44260D1D7B0022059C /* GFEmptyStateView.swift */,
+				5E733CAE260E48E30022059C /* GFItemInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				5E733B26260C8A3B0022059C /* Follower.swift in Sources */,
 				5E733AFF260BC3DF0022059C /* UIViewController+Ext.swift in Sources */,
 				5E733AD5260B88900022059C /* SearchVC.swift in Sources */,
+				5E733CAF260E48E30022059C /* GFItemInfoView.swift in Sources */,
 				5E733B32260CA5C80022059C /* NetworkManager.swift in Sources */,
 				5E733ADB260B94800022059C /* GFButton.swift in Sources */,
 				5E733ABD260B80C90022059C /* AppDelegate.swift in Sources */,
