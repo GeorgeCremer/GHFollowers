@@ -56,10 +56,11 @@ class NetworkManager {
         task.resume()
     }
     
-    func getUserInfo(for Username: String, completed: @escaping(Result<User, GFError>) -> Void) {
+    func getUserInfo(for username: String, completed: @escaping(Result<User, GFError>) -> Void) {
      
-        let endpoint = baseURL + "\(Username)"
+        let endpoint = baseURL + "\(username)"
         
+        print("endpoint \(endpoint)")
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUserName))
             return
