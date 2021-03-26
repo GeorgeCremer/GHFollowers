@@ -21,6 +21,7 @@ class GFItemInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +34,9 @@ class GFItemInfoView: UIView {
         addSubview(countLabel)
         
         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor = .label
         
