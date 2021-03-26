@@ -55,6 +55,7 @@ class GFItemInfoView: UIView {
         ])
     }
     
+    
     func set(itemInfoType: ItemInfoType, withCount count: Int) {
        
         countLabel.text = String(count)
@@ -74,4 +75,6 @@ class GFItemInfoView: UIView {
             titleLabel.text = "Following"
         }
     }
+    
+    
 }
