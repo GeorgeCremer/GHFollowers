@@ -37,6 +37,7 @@ class GFTextfield: UITextField {
         returnKeyType                = .go
         
         placeholder                  = "Enter a username"
+        
     }
 
 }
