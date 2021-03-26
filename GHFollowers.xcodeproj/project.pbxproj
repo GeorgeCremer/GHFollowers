@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E4C75A5260E5E0900A406F0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4C75A4260E5E0900A406F0 /* Date+Ext.swift */; };
 		5E733ABD260B80C90022059C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733ABC260B80C90022059C /* AppDelegate.swift */; };
 		5E733ABF260B80C90022059C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E733ABE260B80C90022059C /* SceneDelegate.swift */; };
 		5E733AC6260B80CD0022059C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E733AC5260B80CD0022059C /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E4C75A4260E5E0900A406F0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		5E733AB9260B80C90022059C /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E733ABC260B80C90022059C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E733ABE260B80C90022059C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				5E733AFE260BC3DF0022059C /* UIViewController+Ext.swift */,
 				5E733AEC260BB8630022059C /* String+Ext.swift */,
+				5E4C75A4260E5E0900A406F0 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				5E733AFF260BC3DF0022059C /* UIViewController+Ext.swift in Sources */,
 				5E733AD5260B88900022059C /* SearchVC.swift in Sources */,
 				5E733CAF260E48E30022059C /* GFItemInfoView.swift in Sources */,
+				5E4C75A5260E5E0900A406F0 /* Date+Ext.swift in Sources */,
 				5E733CB2260E50880022059C /* GFItemInfoVC.swift in Sources */,
 				5E733B32260CA5C80022059C /* NetworkManager.swift in Sources */,
 				5E733ADB260B94800022059C /* GFButton.swift in Sources */,
