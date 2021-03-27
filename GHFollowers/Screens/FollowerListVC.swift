@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListVC: UIViewController {
 
     enum Section {
@@ -134,6 +138,8 @@ extension FollowerListVC: UICollectionViewDelegate {
         
         let destinationVC = UserInfoVC()
         destinationVC.userName = follower.login
+        destinationVC.delegate = self
+        
         
         let navigationController = UINavigationController(rootViewController: destinationVC)
         
@@ -164,4 +170,18 @@ extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     
     
     
+}
+
+extension FollowerListVC: FollowerListVCDelegate {
+    func didRequestFollowers(for username: String) {
+        // get followers for that user
+        print("didRequestFollowers")
+        self.username   = username
+        title           = username
+        page            = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: 1)
+    }
 }
