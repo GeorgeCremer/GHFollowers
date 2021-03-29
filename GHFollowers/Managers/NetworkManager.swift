@@ -101,6 +101,7 @@ class NetworkManager {
             
             let cacheKey = NSString(string: urlString)
             if let image = cache.object(forKey: cacheKey) {
+                
                return completed(image)
                 
             }
@@ -110,9 +111,9 @@ class NetworkManager {
                 return
             }
             
-            let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+            let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
                 guard let self = self,
-                      error != nil,
+                      error == nil,
                       let response = response as? HTTPURLResponse, response.statusCode == 200,
                       let data = data,
                       let image = UIImage(data: data) else {
@@ -124,4 +125,6 @@ class NetworkManager {
             }
             task.resume()
     }
+
+    
 }

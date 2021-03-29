@@ -28,6 +28,7 @@ class FavouriteCell: UITableViewCell {
         usernameLabel.text = favourite.login
         
         NetworkManager.shared.downloadImageFromURL(from: favourite.avatarUrl) { [weak self] image in
+            
             guard let self = self else {return}
             DispatchQueue.main.async {
                 self.avatarImageView.image = image
