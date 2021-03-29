@@ -14,6 +14,7 @@ class SearchVC: UIViewController {
     let userNameTextfield = GFTextfield()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
+    var logoImageViewTopConstraint: NSLayoutConstraint!
     var isUserNameEntered: Bool { return !userNameTextfield.text!.isEmpty }
     
     // MARK: - IBOutlets
@@ -23,7 +24,6 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
 
         // This will adapt to darkmode
-        
         view.backgroundColor = .systemBackground
         
         configureLogoImageView()
@@ -34,6 +34,7 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userNameTextfield.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -57,8 +58,13 @@ class SearchVC: UIViewController {
         view.addSubview(logoImageView)
         
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")!
+        logoImageView.image = Images.ghLogo
        
+        
+        let topconstraint: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topconstraint)
+        logoImageViewTopConstraint.isActive = true
+
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 80),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -107,12 +113,9 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
             return
         }
-        
-        let followerListVC = FollowerListVC()
-        followerListVC.username = userNameTextfield.text
-        followerListVC.title = userNameTextfield.text
+        userNameTextfield.resignFirstResponder()
+        let followerListVC = FollowerListVC(userName: userNameTextfield.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
-        
     }
     
     // MARK: - Network Manager calls
