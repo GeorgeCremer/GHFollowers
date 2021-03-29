@@ -60,7 +60,6 @@ class NetworkManager {
      
         let endpoint = baseURL + "\(username)"
         
-        print("endpoint \(endpoint)")
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invalidUserName))
             return

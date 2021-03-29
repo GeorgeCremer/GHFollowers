@@ -30,12 +30,13 @@ class FavouritesListVC: GFDataLoadingVC, UITableViewDelegate {
     
     func configureTableView(){
         view.addSubview(tableView)
-        tableView.frame = view.bounds
-        tableView.rowHeight = 80
+        tableView.frame      = view.bounds
+        tableView.rowHeight  = 80
+        tableView.delegate   = self
+        tableView.dataSource = self
         tableView.removeExcessCells()
         tableView.register(FavouriteCell.self, forCellReuseIdentifier: FavouriteCell.reuseID)
-        tableView.delegate = self
-        tableView.dataSource = self
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,24 +49,27 @@ class FavouritesListVC: GFDataLoadingVC, UITableViewDelegate {
           
             switch result {
             case .success(let favourites):
+                self.updateUI(with: favourites)
                 
-                if favourites.isEmpty {
-                    self.showEmptyStateView(with: "No favourites?\nAdd on on the follower screen!", in: self.view)
-                } else {
-                    self.favourites = favourites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong!", message: error.rawValue, buttonTitle: "Ok")
 
             }
         }
     }
-
     
+    
+    func updateUI(with favourites: [Follower]) {
+        if favourites.isEmpty {
+            self.showEmptyStateView(with: "No favourites?\nAdd on on the follower screen!", in: self.view)
+        } else {
+            self.favourites = favourites
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.view.bringSubviewToFront(self.tableView)
+            }
+        }
+    }
 }
 
 extension FavouritesListVC: UITabBarDelegate, UITableViewDataSource {
@@ -75,6 +79,7 @@ extension FavouritesListVC: UITabBarDelegate, UITableViewDataSource {
         return favourites.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FavouriteCell.reuseID) as! FavouriteCell
         let favourite = favourites[indexPath.row]
@@ -82,12 +87,14 @@ extension FavouritesListVC: UITabBarDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favourite = favourites[indexPath.row]
         let destinationVC = FollowerListVC(userName: favourite.login)
    
         navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else {return}
@@ -102,9 +109,5 @@ extension FavouritesListVC: UITabBarDelegate, UITableViewDataSource {
                 return}
             self.presentGFAlertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
         }
-        
     }
-
-    
-    
 }

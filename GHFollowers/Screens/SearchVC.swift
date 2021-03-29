@@ -14,7 +14,6 @@ class SearchVC: UIViewController {
     let userNameTextfield = GFTextfield()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
 
-    var logoImageViewTopConstraint: NSLayoutConstraint!
     var isUserNameEntered: Bool { return !userNameTextfield.text!.isEmpty }
     
     // MARK: - IBOutlets
@@ -59,13 +58,10 @@ class SearchVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
        
-        
         let topconstraint: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
-        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topconstraint)
-        logoImageViewTopConstraint.isActive = true
-
+        
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 80),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topconstraint),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -96,12 +92,6 @@ class SearchVC: UIViewController {
     }
     
     
-    // MARK: - IBActions
-    
-    // MARK: - Actions
-    
-    // MARK: - Navigation
-    
     @objc func pushFollowerListVC(){
        
         guard isUserNameEntered else {
@@ -113,14 +103,7 @@ class SearchVC: UIViewController {
         let followerListVC = FollowerListVC(userName: userNameTextfield.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
-    
-    // MARK: - Network Manager calls
-    
-  
-    
-
 }
-// MARK: - Extensions
 
 extension SearchVC: UITextFieldDelegate {
     

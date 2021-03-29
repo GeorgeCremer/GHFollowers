@@ -14,8 +14,6 @@ class GFDataLoadingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
@@ -36,9 +34,9 @@ class GFDataLoadingVC: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         ])
-        
         activityIndicator.startAnimating()
     }
+    
     
     func dissmissLoadingView(){
         DispatchQueue.main.async {
@@ -46,6 +44,7 @@ class GFDataLoadingVC: UIViewController {
             self.containerView = nil
         }
     }
+    
     
     func showEmptyStateView(with message: String, in view: UIView) {
         let emptyStateView = GFEmptyStateView(message: message)
