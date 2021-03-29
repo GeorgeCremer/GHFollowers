@@ -13,31 +13,31 @@ class FavouriteCell: UITableViewCell {
     let avatarImageView = GFAvatarImageView(frame: .zero)
     let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 26)
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
         
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     func set(favourite: Follower) {
         usernameLabel.text = favourite.login
-        avatarImageView.downloadImage(from: favourite.avatarUrl)
+        avatarImageView.downloadImage(fromURL: favourite.avatarUrl)
     }
     
     
     private func configure(){
-        addSubview(avatarImageView)
-        addSubview(usernameLabel)
+      
+        addSubviews(avatarImageView,usernameLabel)
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 12
         let avatarHeight: CGFloat = 60
         let userNameHeight: CGFloat = 40
-        
         
         NSLayoutConstraint.activate([
             avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),

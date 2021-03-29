@@ -23,9 +23,9 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
 
         // This will adapt to darkmode
-        
         view.backgroundColor = .systemBackground
         
+        view.addSubviews(logoImageView,logoImageView,userNameTextfield,callToActionButton)
         configureLogoImageView()
         configureTextField()
         configureCallToActionButton()
@@ -34,6 +34,7 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userNameTextfield.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -53,14 +54,14 @@ class SearchVC: UIViewController {
         
     }
     
-    func configureLogoImageView(){
-        view.addSubview(logoImageView)
-        
+    func configureLogoImageView(){        
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")!
+        logoImageView.image = Images.ghLogo
        
+        let topconstraint: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor , constant: 80),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topconstraint),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalToConstant: 200)
@@ -68,7 +69,6 @@ class SearchVC: UIViewController {
     }
     
     func configureTextField(){
-        view.addSubview(userNameTextfield)
         userNameTextfield.delegate = self
        
         NSLayoutConstraint.activate([
@@ -81,8 +81,6 @@ class SearchVC: UIViewController {
     
 
     func configureCallToActionButton(){
-        
-        view.addSubview(callToActionButton)
         callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -94,12 +92,6 @@ class SearchVC: UIViewController {
     }
     
     
-    // MARK: - IBActions
-    
-    // MARK: - Actions
-    
-    // MARK: - Navigation
-    
     @objc func pushFollowerListVC(){
        
         guard isUserNameEntered else {
@@ -107,26 +99,17 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
             return
         }
-        
-        let followerListVC = FollowerListVC()
-        followerListVC.username = userNameTextfield.text
-        followerListVC.title = userNameTextfield.text
+        self.userNameTextfield.resignFirstResponder()
+        let followerListVC = FollowerListVC(userName: userNameTextfield.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
-        
     }
-    
-    // MARK: - Network Manager calls
-    
-  
-    
-
 }
-// MARK: - Extensions
 
 extension SearchVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
+        userNameTextfield.resignFirstResponder()
         return true
     }
 }

@@ -9,19 +9,21 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
 
-    let avatarImageView = GFAvatarImageView(frame: .zero)
-    let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 34)
-    let nameLabel = GFSecondaryTitleLabel(fontSize: 18)
-    let locationImageView = UIImageView()
-    let locationLabel = GFSecondaryTitleLabel(fontSize: 18)
-    let bioLabel = GFBodyLabel(textAlignment: .left)
+    let avatarImageView     = GFAvatarImageView(frame: .zero)
+    let usernameLabel       = GFTitleLabel(textAlignment: .left, fontSize: 34)
+    let nameLabel           = GFSecondaryTitleLabel(fontSize: 18)
+    let locationImageView   = UIImageView()
+    let locationLabel       = GFSecondaryTitleLabel(fontSize: 18)
+    let bioLabel            = GFBodyLabel(textAlignment: .left)
     
     var user: User!
+    
     
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
         self.user = user
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,28 +32,24 @@ class GFUserInfoHeaderVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSubviews()
         layoutUI()
         configureUIElements()
-
     }
     
     func configureUIElements(){
-        avatarImageView.downloadImage(from: user.avatarUrl)
+        view.addSubviews(avatarImageView,usernameLabel,nameLabel,locationImageView,locationLabel,bioLabel)
+        avatarImageView.downloadImage(fromURL: user.avatarUrl)
+
         usernameLabel.text          = user.login
         nameLabel.text              = user.name ?? ""
         locationLabel.text          = user.location ?? "No Location"
         bioLabel.text               = user.bio ?? "No bio available"
         bioLabel.numberOfLines      = 3
-        locationImageView.image     = UIImage(systemName: SFSymbols.location)
+        locationImageView.image     = SFSymbols.location
         locationImageView.tintColor = .secondaryLabel
     }
     
-    func addSubviews(){
-        let views = [avatarImageView,usernameLabel,nameLabel,locationImageView,locationLabel,bioLabel]
-        views.forEach {view.addSubview($0)}
-    }
-    
+     
     func layoutUI(){
         let padding: CGFloat          = 20
         let textImagePadding: CGFloat = 12
@@ -87,8 +85,7 @@ class GFUserInfoHeaderVC: UIViewController {
             bioLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: textImagePadding),
             bioLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
             bioLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bioLabel.heightAnchor.constraint(equalToConstant: 60),
-        
+            bioLabel.heightAnchor.constraint(equalToConstant: 90),
         ])
     }
 }
