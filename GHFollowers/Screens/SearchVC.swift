@@ -26,6 +26,7 @@ class SearchVC: UIViewController {
         // This will adapt to darkmode
         view.backgroundColor = .systemBackground
         
+        view.addSubviews(logoImageView,logoImageView,userNameTextfield,callToActionButton)
         configureLogoImageView()
         configureTextField()
         configureCallToActionButton()
@@ -54,9 +55,7 @@ class SearchVC: UIViewController {
         
     }
     
-    func configureLogoImageView(){
-        view.addSubview(logoImageView)
-        
+    func configureLogoImageView(){        
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
        
@@ -74,7 +73,6 @@ class SearchVC: UIViewController {
     }
     
     func configureTextField(){
-        view.addSubview(userNameTextfield)
         userNameTextfield.delegate = self
        
         NSLayoutConstraint.activate([
@@ -87,8 +85,6 @@ class SearchVC: UIViewController {
     
 
     func configureCallToActionButton(){
-        
-        view.addSubview(callToActionButton)
         callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
@@ -113,7 +109,7 @@ class SearchVC: UIViewController {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to look for 😀", buttonTitle: "OK")
             return
         }
-        userNameTextfield.resignFirstResponder()
+        self.userNameTextfield.resignFirstResponder()
         let followerListVC = FollowerListVC(userName: userNameTextfield.text!)
         navigationController?.pushViewController(followerListVC, animated: true)
     }
@@ -130,6 +126,7 @@ extension SearchVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
+        userNameTextfield.resignFirstResponder()
         return true
     }
 }

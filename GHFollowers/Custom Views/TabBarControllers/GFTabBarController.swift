@@ -14,13 +14,8 @@ class GFTabBarController: UITabBarController {
 
         UITabBar.appearance().tintColor     = .systemGreen
         viewControllers                     = [createSearchNC(),createFavouritesNC()]
-
-        
-        
+ 
     }
-    
-
-
     
     func createSearchNC() -> UINavigationController {
         let searchVC = SearchVC()
